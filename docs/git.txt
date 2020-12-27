@@ -1,0 +1,60 @@
+git
+
+查看用户名和邮箱及修改
+cmd:
+  git config user.name
+  git config user.email
+  git config --global user.name "markppppy"
+  git config --global user.email "ppppy161@qq.com"
+
+本地git仓库初始化：在指定目录下cmd执行: git init
+
+在本地git新增文档后，放入git仓库：
+  1、git add filename  放入仓库缓冲区
+  2、git commit -m "提交说明" 把缓冲区提交到本地仓库
+
+查看提交记录: git log
+
+查看每次修改仓库的命令：git reflog
+
+实现版本回退：
+git reset --hard HEAD~1      回退上个版本，1改为几就是回退几个版本
+git reset --hard commit_id   根据commit_id回退，commit_id可以不写全
+
+切换本地仓库:
+在新的目录下cmd执行: git init 
+
+查看仓库当前分支：git branch 
+查看仓库所有分支：git branch -a
+查看远程仓库的分支：git branch -r
+
+切换分支：git checkout 分支名
+
+如何新建分支和合并分支待补充
+
+本地仓库目录改为普通文件夹：删除目录中的隐藏文件夹.git 
+
+===========================
+
+使用github
+
+本地git创建ssh key: ssh-keygen -t rsa -C "ppppy161@qq.com"   执行后会在计算机用户主目录下生成公钥和密钥，过程中会有key的fingerprint和randomart image，暂时不知道有啥用
+
+在github中添加公钥
+
+然后把github上的项目clone到本地：git clone git@github.com:markppppy/python3.git 
+
+本地仓库和github仓库建立连接：
+    git remote add python3_gh git@github.com:markppppy/python3.git
+    说明：这里的python3_gh 是给远程仓库起的名字, 因为同一个本地仓库可以对应多个远程仓库
+
+把本地仓库代码推送到远程仓库：
+    git push -u python3_gh master
+    说明：这里的master既是本地仓库的分支，也是要推的远程仓库的分支，如果本地分支叫dev，远程分支叫mater，则写为：git push -u python3_gh dev:master；
+              要确认远程分支名，主分支可能叫master、main或其它
+
+查看关联的远程远程仓库：git remote
+
+====================
+
+参考链接：https://www.jianshu.com/p/296d22275cdd
