@@ -704,6 +704,7 @@ freq可取值:
 ​    pd.read_csv('文件名', engine='python', encoding='...', ...)
 
 ​    pd.read_excel('文件名', sheetname='...', ...)
+        read_*通用参数：1、parse_dates=[1]  指定哪几列是日期；date_parser=lambda x: pd.to_datetime(x, format='%Y/%m/%d')) 用来指定字符串日期的格式，把其识别为日期
 
 .cut(x, bins, right=True, labels=None,...)
 
