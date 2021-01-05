@@ -44,7 +44,7 @@ git reset --hard commit_id   根据commit_id回退，commit_id可以不写全
 
 然后把github上的项目clone到本地：git clone git@github.com:markppppy/python3.git 
 
-本地仓库和github仓库建立连接：
+本地仓库和github仓库建立连接(如果是从github上clone下来的项目就不需要这个操作)：
     git remote add python3_gh git@github.com:markppppy/python3.git
     说明：这里的python3_gh 是给远程仓库起的名字, 因为同一个本地仓库可以对应多个远程仓库
 
