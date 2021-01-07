@@ -11,7 +11,9 @@
 - 退出虚拟环境：`deactivate`
 - 删除某个虚拟环境：`anaconda env remove -n xxx` 
 - 设置conda下载源：`conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/`
-
+- 查看某个包版本：`conda list package_name`
+- 升级包: `conda update package_name`
+- conda上查看指定包可用版本：`conda search package_name`
 ## 常见问题
 - 所需的包在conda下没有怎么办？<br>
   在conda虚拟环境下，使用pip安装；
