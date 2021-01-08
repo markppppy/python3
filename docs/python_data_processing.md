@@ -35,8 +35,12 @@ pd.read_csv() 参数说明：<br>
 2. 也可以写个函数作用于某一列，如: `df[col_new] = df['col'].map(fuc)`
 
 ---
-### 对列名重命名
-`df.rename(columns={'col_orgn1': 'col_new1', 'col_orgn2': 'col_new2'})`
+### 对行列索引重命名
+`df.rename(columns={'col_orgn1': 'col_new1', 'col_orgn2': 'col_new2'}, index={})` 该方法既可以修改列名也可以修改行名; <br>
+
+---
+### 选取指定行列索引, 并添加新行列
+`df.reindex(index=[], columns=[])` 选取已有的列，没有的列值会用NaN填充; <br>
 
 ---
 ### 空值替换
