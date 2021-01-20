@@ -26,6 +26,18 @@ pd.read_csv() 参数说明：<br>
 - return True or False
 ---
 
+### 空值替换
+
+`df.fillna(0)` or `df['col'].fillna(0)`
+- 不仅可以传入0, 也可以传`df['col_else']`其他列
+
+---
+
+### 排序
+`df.sort_values(by='create_dt',ascending=True).reset_index(drop=True, inplace=True)`  排序后index会打乱，根据需要reset_index
+
+---
+
 ### 分组聚合
 
 `df_agg = df_origin.groupby('spread_source_code').agg({'total_cnt':np.sum,'pay_cnt':np.sum,'called_cnt':np.sum,'invalid_cnt':np.sum})`
@@ -59,12 +71,18 @@ pd.read_csv() 参数说明：<br>
 
 ---
 
-### 空值替换
+### 打乱df中的行
 
-`df.fillna(0)` or `df['col'].fillna(0)`
-- 不仅可以传入0, 也可以传`df['col_else']`其他列
+`data_shuffle = data.sample(frac=1)` `.sample()`随机抽样
 
 ---
+
+### 获取整个df的前百分之n行的df
+
+`train = df_sample[df_sample.index <= df_sample['label'].count()*0.8]` 取`df_sample`的前80%作为新的df
+
+---
+
 
 ### 根据列值筛选，删除某行
 
@@ -76,7 +94,7 @@ pd.read_csv() 参数说明：<br>
 ### 获取某个值
 
 `df[df['id']=='1']['grade_id'].values[0]`
-- `df[df['id']=='1']['grade_id']`这样取会带索引
+  - `df[df['id']=='1']['grade_id']`这样取会带索引
 
 ---
 
