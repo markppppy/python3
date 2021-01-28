@@ -22,8 +22,12 @@ pd.read_csv() 参数说明：<br>
 ---
 
 ### 判空
-`df.empty`
+`df.empty`  df是否为空
 - return True or False
+
+`df['col']` 某列值是否为Nan
+- return True or False
+
 ---
 
 ### 空值替换
