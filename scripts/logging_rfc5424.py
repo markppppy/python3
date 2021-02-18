@@ -12,7 +12,9 @@ import socket
 from rfc5424logging import Rfc5424SysLogHandler, NILVALUE
 import datetime
 
-envType = os.getenv("envType")
+# envType = os.getenv("envType")
+
+envType = 'local'
 
 
 def setting_log(info, msg):
@@ -23,7 +25,7 @@ def setting_log(info, msg):
     hostname = socket.gethostname()
     addr = socket.gethostbyname(hostname)
     sh = Rfc5424SysLogHandler(
-        address=('rsyslog.idc.cedu.cn', 517),
+        address=('192.168.0.104', 517),  # rsyslog.idc.cedu.cn
         facility=23,
         hostname=addr,
         appname="ps-bi-courseevalu",

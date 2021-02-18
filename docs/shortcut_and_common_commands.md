@@ -73,7 +73,7 @@
 
 以下命令需要在anaconda prompt环境输入<br>
 - 查看当前所有虚拟环境：`conda env list`
-- 创建虚拟环境：`conda create -n py_3.6 python=3.6`  py_3.6 是环境名称<br>
+- 创建虚拟环境：`activate`初次使用需要 `conda create -n py_3.6 python=3.6`  py_3.6 是环境名称<br>
 - 激活虚拟环境：`conda activate py_3.6` 即进入指定虚拟环境
 - 退出虚拟环境：`deactivate`
 - 删除某个虚拟环境：`anaconda env remove -n xxx` 
@@ -108,6 +108,7 @@
 
 - 脚本模板设置: ctrl + shift + p, 输入 snippets
 
+- 使用conda虚拟py环境：在设置的'python.pythonPath'值改为: D:\Apps\anaconda3\envs
 
 
 
