@@ -38,7 +38,7 @@ pd.read_csv() 参数说明：<br>
 ---
 
 ### 排序
-`df.sort_values(by='create_dt',ascending=True).reset_index(drop=True, inplace=True)`  排序后index会打乱，根据需要reset_index
+`df.sort_values(by='create_dt', ascending=True).reset_index(drop=True, inplace=True)`  排序后index会打乱，根据需要reset_index
 
 ---
 

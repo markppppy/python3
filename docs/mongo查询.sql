@@ -13,17 +13,37 @@ db.c_trial_course_tch_feature.find().explain()
 
 db.c_trial_course_tch_feature.find({'teacher_id':{$eq:382151}}).explain()
 
--- mongo创建索引 
+-- mongo创建索引与联合索引  3.x版本以后 只有.createIndex(), .ensureIndex()作为.createIndex()的别名
 db.test.ensureIndex({name:1},{name:'index_name'})
 db.test.ensureIndex({name:1,age:1,sex:1},{name:'index_nas'})
 
--- 针对表中已有大量数据 创建索引应该使用!!!
-db.posts.ensureIndex({user_id: 1}, {background: 1})
+-- 单字段索引的升降序无所谓，合理使用可以提高联合索引的效率
+
+-- 创建稀疏索引
+db.getCollection("c_alb_course_schedule_log_meta").ensureIndex({"arrange_course_schedule_id": -1}, {sparse:true, background:true})
+
+
+
+-- 创建唯一索引
+db.getCollection("c_alb_course_schedule_log_meta").ensureIndex({"arrange_course_schedule_id": -1}, {unique:true, background:true})
+
+-- 同一个字段分开创建不同类型的索引是多个索引，如果想加多个属性，应该一起创建，如：{unique:true, sparse:true, background:true}
+-- background:true 当集合中已有数据时应加该参数，避免阻塞其他操作 
+-- {"arrange_course_schedule_id": -1} 1和-1指升降序
 
 -- mongo查询时使用索引 是根据创建 的时候从左到右依次进行的，所以假设只创建了复合索引，查询时只查单一字段 也是 有效的
 
 -- mongo查看已有索引
 db.c_hlab_teacher_info_rt.getIndexes()
+
+-- mongo修改索引：只能先删除再创建
+
+-- mongo删除指定索引
+db.c_alb_course_schedule_log_meta.dropIndex({ "arrange_course_schedule_id": 1})
+
+
+-- mongo删除全部索引
+db.c_alb_course_schedule_log_meta.dropIndexes()
 
 -- mongo query
 db.c_hlab_teacher_info_rt.find({},
@@ -107,6 +127,8 @@ db.c_hlab_teacher_info_rt.aggregate({'$match': {'merit_cnt_1': {'$eq': '0'},'w5_
 db.c_hlab_teacher_info_rt.aggregate({'$match': {'$or': [{'merit_cnt_1': {'$eq': '0'},'w5_t2':{'$eq': 5}}, {'teach_ks': {'$lt': '10'}}]}}
 ,{'$project':{'teacher_id':1, 'merit_cnt_1':1, 'w5_t2':1, 'teach_ks':1}}
 ).limit(20)
+
+-- 实现if a and b else 
 
 
 -- 修改mongo集合的所有字段类型
