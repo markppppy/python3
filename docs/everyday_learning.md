@@ -4,7 +4,7 @@
 
 
 ## gunicorn工作方式
-
+默认sync、gthread、gevent
 
 # 数据结构
 
