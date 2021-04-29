@@ -14,6 +14,21 @@ pd.read_csv() 参数说明：<br>
   date_parser 指定日期字符串的格式，如`date_parser=lambda x: pd.to_datetime(x, format='%Y/%m/%d')`
 ---
 
+### 查看dataframe信息
+```python
+df.info()  # df的数据类型和空值数
+df.isnull().sum()  # 每列的空值数
+df_origin.describe()  # 每列的统计值
+df[col].dtypes  # col列的数据类型
+df.shape  # df的形状，即行列数
+```
+
+### 修改df数据类型(待补充)
+```python
+df[col].astype('object')  # astype会有隐藏的错误
+# 参考：https://zhuanlan.zhihu.com/p/35287822
+```
+
 ### 去重
 
 `df_unique = df_origin.drop_duplicates(subset=['column_name'], keep='first')`<br>
@@ -45,8 +60,10 @@ pd.read_csv() 参数说明：<br>
 --- 
 
 ### 排序
-`df.sort_values(by='create_dt', ascending=True).reset_index(drop=True, inplace=True)`  排序后index会打乱，根据需要reset_index
-
+```python
+df.sort_values(by='create_dt', ascending=True, inplace=True)
+df.reset_index(drop=True, inplace=True)  # 排序后index会打乱，根据需要reset_index
+```
 ---
 
 ### 分组聚合
