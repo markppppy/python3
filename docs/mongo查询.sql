@@ -14,7 +14,7 @@ db.c_trial_course_tch_feature.find().explain()
 db.c_trial_course_tch_feature.find({'teacher_id':{$eq:382151}}).explain()
 
 -- mongo创建索引与联合索引  3.x版本以后 只有.createIndex(), .ensureIndex()作为.createIndex()的别名
-db.test.ensureIndex({name:1},{name:'index_name'})
+db.test.ensureIndex({name:1},{name:'index_name'})  -- mongo版本4.2以后, 默认使用background, 如果不需要可以指定false
 db.test.ensureIndex({name:1,age:1,sex:1},{name:'index_nas'})
 
 -- 单字段索引的升降序无所谓，合理使用可以提高联合索引的效率
