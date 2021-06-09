@@ -135,7 +135,7 @@ df.loc[df['sex']=='f','sex'] = 0
 
 ---
 
-### 计算日期列时间查
+### 计算日期列时间差
 
 ```python
 import pandas as pd
@@ -149,6 +149,13 @@ today = datetime(2200, 1, 1)
 
 df['entry_dt'] = pd.to_datetime(df['entry_dt'])
 df['days_diff'] = (df['entry_dt'] - today).apply(lambda x: x.days)
+```
+
+---
+
+### dataframe字符串日期转datetime64
+```python
+df_origin['create_time'] = pd.to_datetime(df_origin['create_time'].str[:-2], format='%Y-%m-%d%H:%M:%S')  # 2021-02-2419:52:55.0
 ```
 
 ---
