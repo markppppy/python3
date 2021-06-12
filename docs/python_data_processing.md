@@ -23,6 +23,11 @@ df[col].dtypes  # col列的数据类型
 df.shape  # df的形状，即行列数
 ```
 
+### df.head()时，显示全部列，不隐藏; 
+```python
+pd.set_option('display.max_columns', None)
+```
+
 ### 修改df数据类型(待补充)
 ```python
 df[col].astype('object')  # astype会有隐藏的错误
@@ -145,9 +150,9 @@ data = [{'teacher_id': 12, 'entry_dt': '2021-02-05'}, {'teacher_id': 123, 'entry
 df = pd.DataFrame(data, columns=['teacher_id', 'entry_dt'])
 
 today = datetime(2200, 1, 1)
+df['entry_dt'] = pd.to_datetime(df['entry_dt'])
 # df['days_diff'] = list(map(lambda x: x.days, df['entry_dt'] - pd.to_datetime('today')))
 
-df['entry_dt'] = pd.to_datetime(df['entry_dt'])
 df['days_diff'] = (df['entry_dt'] - today).apply(lambda x: x.days)
 ```
 
