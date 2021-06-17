@@ -22,9 +22,28 @@ haystack 和 needle 仅由小写英文字符组成
 
 
 def strStr(haystack: str, needle: str) -> int:
-    return 1
+    # 应该使用kmp算法，这里的写法有待优化
+    # i haystack  j needle
+    ln_needle = len(needle)
+    if ln_needle == 0:
+        return 0
+    ln = len(haystack)
+    for n in range(ln):
+        if haystack[n] == needle[0]:
+            if ln - n + 1 < ln_needle:
+                return -1
+            for j in range(ln_needle):
+                if n+j > ln - 1 or needle[j] != haystack[n+j]:  # aaa 和 aaaa 特殊情况的考虑 n+j > ln - 1
+                    break
+                if j == ln_needle - 1:
+                    return n
+    return -1
 
 
 if __name__ == '__main__':
-    print()
+    # haystack = "hello"
+    # needle = "ll"
+    haystack = "aaa"
+    needle = "aaaa"
+    print(strStr(haystack, needle))
 

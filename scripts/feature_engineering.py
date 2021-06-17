@@ -117,7 +117,9 @@ df_origin[rectify] = dt_fit  # 是给df_origin中的rectify这些列赋值
 
 # 特征处理 - 线性相关性(省略，这一步的目的是防止多重共线性，这种现象不会影响决策树)
 # 多重共线性怎么在线性回归中成为问题: https://blog.csdn.net/weixin_26750481/article/details/108499848
-# 相关性计算方法有：Pearson Kendall Spearman, 其中 Kendall Spearman 都可用于计算类别特征相关性，具体使用条件待查
+# 相关性计算方法有：Pearson 两个连续变量的线性相关关系
+# Spearman 两个连续变量的非线性相关关系
+# Kendall 两个有序分类变量的相关关系, 有序分类：身高低、中、高；无序分类：男、女；
 df_origin[['gk_mon_diff', 'label']].corr()
 
 # 类别特征编码：one-hot和哑编码 lgbm不需要这一步，其会对类别特征值两两组合分类，以验证效果；
