@@ -22,7 +22,7 @@ haystack 和 needle 仅由小写英文字符组成
 
 
 def strStr(haystack: str, needle: str) -> int:
-    # 应该使用kmp算法，这里的写法有待优化
+    # 使用kmp算法，这里的写法有待优化;
     # i haystack  j needle
     ln_needle = len(needle)
     if ln_needle == 0:
