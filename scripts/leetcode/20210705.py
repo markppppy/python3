@@ -94,5 +94,7 @@ def countOfAtoms(formula: str) -> str:
 if __name__ == '__main__':
     formula = "K4(ON(SO3)2)2"  # "K4N2O14S4"
     print(countOfAtoms(formula))
-
+    a = set()
+    b = tuple()
+    c = dict()
 
