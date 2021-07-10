@@ -37,6 +37,12 @@ unset HIVE_HOME HIVE_CONF_DIR HADOOP_HOME HADOOP_CONF_DIR
 export JAVA_HOME=/usr/local/jdk8
 (hive3先加载环境，然后用这个命令) /usr/hdp/current/hive-client/bin/hive -f get_data.sql > match_feature_data.txt  
 
+分割生成的文本文件： split -l 400000 -d -a 1 leads_for_tmk_0708.txt leads_for_tmk_
+-l 400000 是指每40W行分一次 
+-d 是指文件结尾是数字 -a 1 是指结尾数字的位数 -a 2 的话就是 leads_for_tmk_02
+
+切割后的文件是没有后缀名的，下载到本机后，改后缀名为.txt，然后在excel中用"自文本"加载，再保存就可以
+
 hive -f filename.sql 2> filename.log 错误信息
 
 hive -f filename.sql >> filename.log 2>&1  全部信息
