@@ -46,7 +46,7 @@ class MyLinkedList_:
         if index < 0:  # index 是从0开始的
             return -1
         for _ in range(index+1):
-            if node is not None:
+            if node.next is not None:
                 node = node.next
             else:
                 return -1
@@ -101,7 +101,7 @@ class MyLinkedList_:
                 node = node.next
             else:
                 return
-        if node is not None:
+        if node.next is not None:  # node 是index-1位置的节点, node.next表示node不是尾结点
             ndel = node.next
             node.next = ndel.next
             ndel.next = None
