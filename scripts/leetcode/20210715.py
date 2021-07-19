@@ -32,8 +32,10 @@ pos 的值为 -1 或者链表中的一个有效索引
 FAST 每次比 SLOW 多走一步；
 如果不存在环，FAST将最先到达尾节点；
 当存在环：
-设头节点到到环的入口点
-当FAST和SLOW第一次相遇
+设头节点到到环的入口点的节点数为a, 环的长度为b, FAST、SLOW分别走了f,s步
+当FAST和SLOW第一次相遇, f = 2s, f = s + nb (FAST和SLOW一定在环内相遇，FAST比SLOW多走n个环的长度); 所以 s = nb;
+如果一个指针从头节点到环的入口节点，其走的步数 k = a + nb; 当前 SLOW走了nb, 只要再走a就到头结点，
+此时，SLOW在第一次相遇的地方，每次一步向前，FAST回到头结点，每次一步向前，当再次相遇的时候， SLOW正好走了 a+nb ，在环的入口节点，返回SLOW;
 
 """
 import collections
@@ -49,14 +51,16 @@ from Cython.Compiler.ExprNodes import ListNode
 class Solution:
 
     def detectCycle(self, head: ListNode) -> ListNode:
-        dct = collections.defaultdict(int)
         fast = slow = head
         while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
-            if slow == fast:
-                return fast
-        return None
+            if slow == fast:  # 第一次相遇，再次相遇一定是在环的入口点
+                fast = head
+                while fast != slow:
+                    slow = slow.next
+                    fast = fast.next
+                return slow
 
 
 if __name__ == '__main__':
