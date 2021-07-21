@@ -46,5 +46,40 @@ class Solution:
         return head
 
 
+"""
+反转链表
+
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+
+输入：head = [1,2,3,4,5]
+输出：[5,4,3,2,1]
+
+进阶：链表可以选用迭代或递归方式完成反转。你能否用两种方法解决这道题？
+
+"""
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
+class Solution1:
+    # 题目挺简单的就是很绕，没事可以练练
+    def reverseList(self, head: ListNode) -> ListNode:
+        if head is None or head.next is None:
+            return head
+
+        real_head = head
+        while head.next is not None:  # 判断 head 是否是尾结点
+            node = head.next
+            head.next = node.next
+            node.next = real_head
+            real_head = node
+
+        return real_head
+
+
 if __name__ == '__main__':
     print()
