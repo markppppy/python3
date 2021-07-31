@@ -20,13 +20,27 @@ addAtTail(val)：将值为val 的节点追加到链表的最后一个元素。
 addAtIndex(index,val)：在链表中的第index个节点之前添加值为val 的节点。如果index等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
 deleteAtIndex(index)：如果索引index 有效，则删除链表中的第index 个节点。
 
+
+MyLinkedList linkedList = new MyLinkedList();
+linkedList.addAtHead(1);
+linkedList.addAtTail(3);
+linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
+linkedList.get(1);            //返回2
+linkedList.deleteAtIndex(1);  //现在链表是1-> 3
+linkedList.get(1);            //返回3
+
+20210726 实现了双链表, 有更多的认识
 """
 
 
-class Node_:  # 不继承 object 可以吗?
+class Node_:  # 不继承 object 可以吗?  所有类最终的父类都是object
     def __init__(self, x):
         self.val = x
         self.next = None  # .next 是一个对象
+
+
+# a = Node_(2)
+# print(a.val)
 
 
 class MyLinkedList_:

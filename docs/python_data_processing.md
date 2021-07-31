@@ -52,8 +52,8 @@ df[col].astype('object')  # astype会有隐藏的错误
 
 ### 空值替换
 
-`df.fillna(0)` or `df['col'].fillna(0)`
-- 不仅可以传入0, 也可以传`df['col_else']`其他列
+`df = df.fillna(0)` or `df['col'] = df['col'].fillna(0)` or `df[['col_1', 'col_2', ...]] = df[['col_1', 'col_2', ...]].fillna(0)`
+- `.fillna()`不仅可以传入0, 也可以传`df['col_else']`其他列
 
 ---
 
