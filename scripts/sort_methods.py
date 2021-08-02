@@ -26,4 +26,10 @@
 睡排序
 猴子排序
 """
+from typing import List
+
+
+def buble_sort(lst: List) -> List:
+
+    return []
 
