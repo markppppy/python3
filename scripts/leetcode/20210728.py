@@ -28,7 +28,7 @@ class Solution:
         for x, y in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:
             if 0 <= x < nr and 0 <= y < nc and grid[r][c] == '1':
                 self.dfs(grid, r, c)
-    
+
     def numIslands(self, grid: List[List[str]]) -> int:
         nr = len(grid)
         if nr == 0:
