@@ -30,6 +30,40 @@ from typing import List
 
 
 def buble_sort(lst: List) -> List:
+    # 冒泡排序，每次比较相邻元素，如果前面的大于后面的，就交换位置，每次会把未排序元素中最大元素换到后面
+    n = len(lst)
+    if n <= 1:
+        return lst
+    for i in range(n):  # 遍历的次数，和元素位置没关系
+        for j in range(n-i-1):  # 每次遍历会把有序元素放在最后，所以只比较前面的元素; 为什么是 n-i-1 ? i 是从0开始, 当 i=0 时, n-1即lst的最后一个元素就不用遍历了, 因为 j, j+1
+            if lst[j] > lst[j+1]:  # 这里是大于号, 所以这个冒泡排序是稳定的
+                lst[j], lst[j+1] = lst[j+1], lst[j]
 
-    return []
+    return lst
 
+
+def insert_sort(lst: List) -> List:
+    # 插入排序，每次从后面未排序的元素中，取一个，和前面已排序的元素对比
+    n = len(lst)
+    if n <= 1:
+        return lst
+    for i in range(1, n):  # 每次从 i 到 n-1 取一个元素
+        key = lst[i]
+        j = i - 1
+        while j >= 0 and key < lst[j]:  # 要把元素 lst[i] 插入到 i前合适的位置;  key < lst[j] 决定了结果从小到大还是从大到小, 这个我没想到
+            # 如果 key 小于 lst[j]， 把 lst[j]往后移一位
+            lst[j+1] = lst[j]
+            j -= 1
+        lst[j+1] = key
+    return lst
+
+
+def selection_sort(lst: List) -> List:
+    return lst
+
+
+if __name__ == '__main__':
+    lst_origin = [3, 5, 1, 9]
+    print(insert_sort(lst_origin))
+    # for i in range(0):  # 不会循环的
+    #     print('wulawula')
