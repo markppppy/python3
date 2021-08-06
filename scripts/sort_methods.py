@@ -70,7 +70,7 @@ def selection_sort(lst: List) -> List:
     srtd = 0  # 索引，是未排序列表的位置，用来维护已排序列表
     while srtd < n:
         min_index = srtd
-        for i in range(srtd, n):
+        for i in range(srtd+1, n):
             if lst[i] < lst[min_index]:
                 min_index = i
         lst[srtd], lst[min_index] = lst[min_index], lst[srtd]
