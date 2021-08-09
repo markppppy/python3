@@ -78,8 +78,65 @@ def selection_sort(lst: List) -> List:
     return lst
 
 
+def quick_sort(arr, low, high):
+    # 快速排序: 选取基准值，把所有比他小的元素放在前面，比他大的放在后面；然后再在前后两个集合中重复这个操作，直到集合中的元素个数为0或为1；
+    # 递归执行条件 low < high
+    if low < high:
+        # 选取基准值，并把集合按照基准值划分
+        pi = partition(arr, low, high)
+        # 对子集合进行递归
+        quick_sort(arr, low, pi-1)
+        quick_sort(arr, pi+1, low)
+
+
+def partition(arr, low, high):
+    i = low - 1  # 定义最小索引
+    pivot = arr[high]  # 基准值
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i+1], arr[high] = arr[high], arr[i+1]
+    return i+1  # 返回基准值对应的下标
+
+
+# 每次把 arr[low, high]中 小于 pivot的元素放前面，大于 pivot 的元素放后面
+def partition_(arr, low, high):
+    i = (low - 1)  # 最小元素索引  i 前面的都是小于 pivot的， 最后把 i+1的元素和 po
+    pivot = arr[high]
+    for j in range(low, high):  # 这个遍历不到 arr[high]
+        # 当前元素小于或等于 pivot 
+        if arr[j] <= pivot:
+            i = i + 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+# arr[] --> 排序数组
+# low  --> 起始索引
+# high  --> 结束索引
+
+# 快速排序
+def quickSort(arr, low, high):
+    if low < high:
+        pi = partition_(arr, low, high)
+        quickSort(arr, low, pi - 1)
+        quickSort(arr, pi + 1, high)
+
+
 if __name__ == '__main__':
-    lst_origin = [3, 5, 1, 9, 12, -1]
-    print(selection_sort(lst_origin))
+    lst_origin = [3, 5, -1, 9, 12, 1]
+    # print(selection_sort(lst_origin))
+    n = len(lst_origin)-1
+    # quickSort(lst_origin, 0, n)
+    quick_sort(lst_origin, 0, n)
+    print(lst_origin)
     # for i in range(0):  # 不会循环的
     #     print('wulawula')
+
+    # lst1 = [1, 2, 3]
+    # lst2 = [3, 5]
+    # a = 0
+    # print(lst1 + lst2 + [a])
+
