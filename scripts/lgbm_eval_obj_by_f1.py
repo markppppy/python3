@@ -13,11 +13,14 @@ import lightgbm as lgb
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
-df = pd.read_csv()  # label, feature_1, feature_2, ...
-df_x = df[:, 1:]
-df_y = df[:, :1]
+# file_path=D:\Documents\A算法组-PY应用和算法服务开发集成\试听直排重构\数据\match_feature_data_imitate.txt
+df = pd.read_csv(r'D:\Documents\A算法组-PY应用和算法服务开发集成\试听直排重构\数据\match_feature_data_imitate.txt', header=None, sep='\t')  # label, feature_1, feature_2, ...
 
-x_train, x_test, y_train, y_test = train_test_split(df_x, df_y, test_size=0.3, random_state=36)
+# 数据集划分
+y = df[['label']]
+x = df.drop(['label'], axis=1)
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=36)
 # stratify 指定的是数据集，如 stratify=df_y, 以 test_size 分割后的 train/test 正负样本比例和 stratify 指定的数据集一致
 
 lgb_train = lgb.Dataset(x_train, y_train,
@@ -69,7 +72,8 @@ def binary_error(preds, train_data):
 
 # metric f1
 # return name: string, eval_result: float, is_higher_better: bool
-def binary_f1_metric(preds: array, train_data):
+
+def binary_f1_metric(preds, train_data):
     y_true = train_data.get_label()
     # scikits f1 doesn't like probabilities
     # y_hat = np.round(y_hat)
@@ -82,11 +86,24 @@ def binary_f1_metric(preds: array, train_data):
 
 
 gbm = lgb.train(params,
-                lgb_train,
-                num_boost_round=10,  # 模型迭代次数
+                train_set=lgb_train,
+                num_boost_round=250,
                 # init_model=gbm,  # init_model
-                fobj=loglikelihood,  # 自定义的目标函数名 和 params 中的 objective是相同的设置, 优先params中设置的
-                feval=binary_error,  # 自定义的评价指标名
+                feval=binary_f1_metric,  # 自定义的评价指标名
                 valid_sets=lgb_eval)
 
+
+# 计算F1
+def get_f1_score(df, score_name, label_name, threshold):
+    df['pre_label'] = df[score_name].apply(lambda x: 1 if x >= threshold else 0)
+    f1_score = metrics.f1_score(df[label_name], df['pre_label'])
+    return f1_score
+
+
+# 根据roc确定阈值
+def get_threshold(label, pre):
+    fpr_again, tpr_again, thresholds_again = metrics.roc_curve(label, pre)
+    max_index_again = (tpr_again - fpr_again).tolist().index(max(tpr_again-fpr_again))
+    threshold_again = thresholds_again[max_index_again]
+    return threshold_again
 
