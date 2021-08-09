@@ -82,7 +82,7 @@ def quick_sort(arr, low, high):
     # 快速排序: 选取基准值，把所有比他小的元素放在前面，比他大的放在后面；然后再在前后两个集合中重复这个操作，直到集合中的元素个数为0或为1；
     # 递归执行条件 low < high
     if low < high:
-        # 选取基准值，并把集合按照基准值划分
+        # 选取基准值，并把集合按照基准值划分: 每次把 arr[low, high]中 小于 pivot的元素放前面，大于 pivot 的元素放后面
         pi = partition(arr, low, high)
         # 对子集合进行递归
         quick_sort(arr, low, pi-1)
@@ -99,30 +99,57 @@ def partition(arr, low, high):
     arr[i+1], arr[high] = arr[high], arr[i+1]
     return i+1  # 返回基准值对应的下标
 
-
-# 每次把 arr[low, high]中 小于 pivot的元素放前面，大于 pivot 的元素放后面
-def partition_(arr, low, high):
-    i = (low - 1)  # 最小元素索引  i 前面的都是小于 pivot的， 最后把 i+1的元素和 po
-    pivot = arr[high]
-    for j in range(low, high):  # 这个遍历不到 arr[high]
-        # 当前元素小于或等于 pivot 
-        if arr[j] <= pivot:
-            i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
+# def merge_sort(lst):
+#     # 归并排序: 把集合递归均分成2份，在保证元素大小顺序的同时，逐步合并子集合
 
 
-# arr[] --> 排序数组
-# low  --> 起始索引
-# high  --> 结束索引
+def merge(arr, l, m, r):
+    n1 = m - l + 1
+    n2 = r- m
+    # 创建临时数组
+    L = [0] * (n1)
+    R = [0] * (n2)
 
-# 快速排序
-def quickSort(arr, low, high):
-    if low < high:
-        pi = partition_(arr, low, high)
-        quickSort(arr, low, pi - 1)
-        quickSort(arr, pi + 1, high)
+    # 拷贝数据到临时数组 arrays L[] 和 R[]
+    for i in range(0 , n1):
+        L[i] = arr[l + i]
+
+    for j in range(0 , n2):
+        R[j] = arr[m + 1 + j]
+
+    # 归并临时数组到 arr[l..r]
+    i = 0     # 初始化第一个子数组的索引
+    j = 0     # 初始化第二个子数组的索引
+    k = l     # 初始归并子数组的索引
+
+    while i < n1 and j < n2 :
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
+
+    # 拷贝 L[] 的保留元素
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
+
+    # 拷贝 R[] 的保留元素
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
+
+
+def mergeSort(arr, l, r):
+    if l < r:
+        m = int((l+(r-1))/2)
+        mergeSort(arr, l, m)
+        mergeSort(arr, m+1, r)
+        merge(arr, l, m, r)
 
 
 if __name__ == '__main__':
