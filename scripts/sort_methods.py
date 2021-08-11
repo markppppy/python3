@@ -100,7 +100,7 @@ def partition(arr, low, high):
     return i+1  # 返回基准值对应的下标
 
 # def merge_sort(lst):
-#     # 归并排序: 把集合递归均分成2份，在保证元素大小顺序的同时，逐步合并子集合
+#     # 归并排序: 把集合递归均分成2份，直到子集合元素个数为1; 逐步合并子集合，使每一步合并后的集合有序;
 
 
 def merge(arr, l, m, r):
@@ -156,8 +156,8 @@ if __name__ == '__main__':
     lst_origin = [3, 5, -1, 9, 12, 1]
     # print(selection_sort(lst_origin))
     n = len(lst_origin)-1
-    # quickSort(lst_origin, 0, n)
-    quick_sort(lst_origin, 0, n)
+    # quick_sort(lst_origin, 0, n)
+    mergeSort(lst_origin, 0, n)
     print(lst_origin)
     # for i in range(0):  # 不会循环的
     #     print('wulawula')
