@@ -95,7 +95,7 @@ def partition(arr, low, high):
     for j in range(low, high):
         if arr[j] <= pivot:
             i += 1
-            arr[i], arr[j] = arr[j], arr[i]
+            # arr[i], arr[j] = arr[j], arr[i]
     arr[i+1], arr[high] = arr[high], arr[i+1]
     return i+1  # 返回基准值对应的下标
 
@@ -156,8 +156,8 @@ if __name__ == '__main__':
     lst_origin = [3, 5, -1, 9, 12, 1]
     # print(selection_sort(lst_origin))
     n = len(lst_origin)-1
-    # quick_sort(lst_origin, 0, n)
-    mergeSort(lst_origin, 0, n)
+    quick_sort(lst_origin, 0, n)
+    # mergeSort(lst_origin, 0, n)
     print(lst_origin)
     # for i in range(0):  # 不会循环的
     #     print('wulawula')
