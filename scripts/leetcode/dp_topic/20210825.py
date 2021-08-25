@@ -27,6 +27,7 @@ from typing import List
 
 class Solution:
     def climbStairs(self, n: int) -> int:
+        # todo 递归，记忆化递归，动态规划； 其中记忆化递归还没实现
         # 在走完楼梯前，1和2有多少种组合
         # 可以用递归和动态规划
         # 递归公式: f(n) = f(n-1) + f(n-2) # 到达楼顶的最后一步可能是1步, 也可能是2步; f(1) = 1, f(2) = 2; 终止条件: n <= 2
