@@ -27,9 +27,10 @@ from typing import List
 
 class Solution:
     def climbStairs(self, n: int) -> int:
-        # todo 递归，记忆化递归，动态规划； 其中记忆化递归还没实现
         # 在走完楼梯前，1和2有多少种组合
+        # n=1,1; n=2,2; n=3,3; n=4,5; n=5,8... 有点像斐波那契数列
         # 可以用递归和动态规划
+
         # 递归公式: f(n) = f(n-1) + f(n-2) # 到达楼顶的最后一步可能是1步, 也可能是2步; f(1) = 1, f(2) = 2; 终止条件: n <= 2
         # if n > 2:
         #     return self.climbStairs(n-1) + self.climbStairs(n-2)
@@ -37,22 +38,27 @@ class Solution:
         #     return 1
         # elif n == 2:
         #     return 2
-        # 动态规划: n=1,1; n=2,2; n=3,3; n=4,5; n=5,8... 有点像斐波那契数列
+
+        # 动态规划: 列出走到每一步的组合
+        dp = [0] * n
+        dp[0] = dp[1] = 1
+        for i in range(2, n+1):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[-1]
+
+        # 滚动数组
         # p, q, r = None, None, None  # p 是走到前1阶可能的组合数，q 是走到前2阶可能的组合数，r 是走到当前台阶的可能组合数
         # for i in range(1, n+1):
         #     if i == 1:
-        #         p = 1
         #         r = 1
         #     elif i == 2:
         #         q = 1
-        #         p = 2
-        #         r = 2
-        #     else:  # 这个实现就是滚动数组思想吧
-        #         r = p + q
+        #         p = 1
+        #         r = q + p
+        #     else:
         #         p, q = r, p
-        # 记忆化递归
-
-        return r
+        #         r = p + q
+        # return r
 
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         # 第一步是比较 起始点和下两步的cost还是只比较起始步的cost? 后面的每一步呢?  题目中的思路是计算所有可能到该点的最小代价，而不是下一步怎么走代价最小
