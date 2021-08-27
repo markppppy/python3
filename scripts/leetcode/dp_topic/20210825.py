@@ -38,18 +38,19 @@ class Solution:
         # elif n == 2:
         #     return 2
         # 动态规划: n=1,1; n=2,2; n=3,3; n=4,5; n=5,8... 有点像斐波那契数列
-        p, q, r = None, None, None  # p 是走到前1阶可能的组合数，q 是走到前2阶可能的组合数，r 是走到当前台阶的可能组合数
-        for i in range(1, n+1):
-            if i == 1:
-                p = 1
-                r = 1
-            elif i == 2:
-                q = 1
-                p = 2
-                r = 2
-            else:  # 这个实现就是滚动数组思想吧
-                r = p + q
-                p, q = r, p
+        # p, q, r = None, None, None  # p 是走到前1阶可能的组合数，q 是走到前2阶可能的组合数，r 是走到当前台阶的可能组合数
+        # for i in range(1, n+1):
+        #     if i == 1:
+        #         p = 1
+        #         r = 1
+        #     elif i == 2:
+        #         q = 1
+        #         p = 2
+        #         r = 2
+        #     else:  # 这个实现就是滚动数组思想吧
+        #         r = p + q
+        #         p, q = r, p
+        # 记忆化递归
 
         return r
 
