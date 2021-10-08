@@ -9,6 +9,9 @@
 2. - `tree /f` 循环生成目录结构；
    - `tree` 生成目录结构；
 
+- win10 系统截图快捷键 win + shift + s
+
+
 # Linux
 
 - 查看当前进程: `ps -aux` 详细信息
