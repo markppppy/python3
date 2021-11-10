@@ -10,3 +10,4 @@
 a = max(1, 2, 3)
 print(a) 
 
+print('%dA%dB'%(1, 2))
