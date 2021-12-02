@@ -23,3 +23,5 @@
 * 全局/类变量——CAPS_WITH_UNDER——大写+下划线(私有变量开头加_)
 * 实例变量——lower_with_under——小写+下划线(私有实例开头加_)
 * 函数参数——lower_with_under——小写+下划线
+
+- python 虚拟环境管理 pipenv
