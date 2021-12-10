@@ -138,7 +138,7 @@ df.iloc[0, 1]  # 通过行号和列号获取某个单元格的值  df.iloc[[0], 
 `df.loc[]`通过索引获取数据: `df.loc["line1":"line2", "row1":"row2"]` 逗号前后是行列; 取的数据包含`line2`和`row2`; 获取指定列:`df.loc[:, "row1"]`; 
 df.loc[df['sex']=='f','sex'] = 0
 <br>
-`df.iloc[]`通过行列位置获取数据: `df.iloc[n1:n2, n3:n4]` 行列数从0起, n1表示第n1行; 取的数据不包含`n2`和`n4`; 取指定行的时候使用:`df.iloc[[n1, n2]] or df.iloc[n1:n2:1]`;
+`df.iloc[]`通过行列位置获取数据: `df.iloc[n1:n2, n3:n4]` 行列数从0起, n1表示第n1-1行; 取的数据不包含`n2`和`n4`; 取指定行的时候使用:`df.iloc[[n1, n2]] or df.iloc[n1:n2:1]`;
 
 ---
 
