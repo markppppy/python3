@@ -49,7 +49,7 @@ def get_result():
     #         return True 
     # return False 
 
-    # 滑动窗口，相比思路2，num in s 利用了哈希表的优势
+    # 滑动窗口，相比思路2，num in s 利用了哈希表的优势;  不止如此，好好体会。
     s = set()
     for i, num in enumerate(nums):
         if i > k:
