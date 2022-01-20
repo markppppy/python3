@@ -41,10 +41,47 @@ def get_answer():
 
     for i in range(lth-1):
         diff_m = min(diff_m, -get_diff_min(timePoints[i], timePoints[i+1]))
-    
+
     diff_m = min(diff_m, 1440 + get_diff_min(timePoints[0], timePoints[-1]))
 
     return diff_m
 
 print(get_answer())
 
+"""
+382. 链表随机节点
+
+给你一个单链表，随机选择链表的一个节点，并返回相应的节点值。每个节点 被选中的概率一样 。
+
+实现 Solution 类：
+
+Solution(ListNode head) 使用整数数组初始化对象。
+int getRandom() 从链表中随机选择一个节点并返回该节点的值。链表中所有节点被选中的概率相等。
+
+输入
+["Solution", "getRandom", "getRandom", "getRandom", "getRandom", "getRandom"]
+[[[1, 2, 3]], [], [], [], [], []]
+输出
+[null, 1, 3, 2, 2, 3]
+
+"""
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+
+    def __init__(self, head: Optional[ListNode]):
+        return 
+
+    def getRandom(self) -> int:
+        return 
+
+# todo
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(head)
+# param_1 = obj.getRandom()
