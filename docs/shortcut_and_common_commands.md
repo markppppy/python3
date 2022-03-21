@@ -108,7 +108,7 @@
 
 - 脚本模板设置: ctrl + shift + p, 输入 snippets
 
-- 使用conda虚拟py环境：在设置的'python.pythonPath'值改为: D:\Apps\anaconda3\envs
+- 使用conda虚拟py环境：在设置的'python.pythonPath'值改为: D:\Apps\anaconda3\envs，ctrl+shift+p选择python环境就能看到多个可选环境
 
 
 
