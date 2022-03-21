@@ -9,13 +9,16 @@
 2. - `tree /f` 循环生成目录结构；
    - `tree` 生成目录结构；
 
+- win10 系统截图快捷键 win + shift + s
+
+
 # Linux
 
 - 查看当前进程: `ps -aux` 详细信息
 
 - 查看系统版本：`lsb_release -a`
 
-- 查看文本行数：`wc -l filename.txt`
+- 文件或目录重命名: `mv origin_name new_name` 是使用剪切复制实现的重命名，如果目标路径有new_name，将会被覆盖
 
 - 打包文件：`tar cvf filename.tar *`
   - filename.tar: 指定生成的压缩包名
@@ -30,15 +33,21 @@
 
 - 解压tar.xz命令: `tar xvJf ***.tar.xz`
 
+- 解压zip文件命令: `unzip zip_name.zip` 会把文件解压到zip_name同名目录
+
 - 编写完shell脚本后，更改权限使其成为可执行文件(shell脚本中不用写#!什么的): `chmod 764 filename.sh `
 
 - 调用接口命令：`curl  -H "Content-Type: application/json" -X POST -d '{"student_id":384003,"teacher_id":5731309}' "http://gateway.idc.cedu.cn/bicourseevalu/api/v1/ifCheckTchStu/"`
+
+- 查看文本行数：`wc -l filename.txt`
 
 - vim中,
   - 查找关键字：命令模式下输入：`/keystr` 就是查找keystr 
   - 显示行号 `:set nu` 取消显示 `:set nonu`
 
-# python-pip & conda
+- 待查命令：`pstree -ap|grep gunicorn kill -9 94310`
+
+# python-pip & conda & virtualenv
 
 ## pip
 
@@ -55,6 +64,13 @@
   - `pip freeze` 以requirements格式输出当前python环境已安装的包，不包含自带包; 后面跟参数`- all`可以打印出所有包
 
 - 使用requirements.txt批量安装包: `pip install -r requirements.txt`
+
+## virtualenv创建虚拟环境
+1. pip(/pip3) install virtualenv
+2. 创建虚拟环境 `virtualenv env_name --python=python3.6` 会在执行路径下生成env_name同名目录
+3. 进入虚拟环境 `source ./env_name/bin/activate`
+4. 退出虚拟环境 `deactivate`
+5. 删除虚拟环境: 删除目录`env_name`
 
 ## conda
 
