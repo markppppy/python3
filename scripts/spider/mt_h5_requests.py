@@ -76,4 +76,5 @@ for key,value in city.items():
                 net_bar.append(dic)
 print(net_bar)
 dd=pd.DataFrame.from_dict(net_bar)
-dd.to_excel(r"C:\Users\110815\Desktop\mt_netbar2.xlsx",index=False)
+# dd.to_excel(r"C:\Users\110815\Desktop\mt_netbar2.xlsx",index=False)
+dd.to_excel(r"mt_netbar2.xlsx",index=False)
