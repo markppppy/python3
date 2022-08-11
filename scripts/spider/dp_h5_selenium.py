@@ -9,7 +9,7 @@ import time
 
 def get_driver():
     # s = Service(r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver_win32\chromedriver.exe")
-    s = Service(r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
+    s = Service(r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
     options = webdriver.ChromeOptions()
     options.add_argument('lang=zh_CN.UTF-8')
     options.add_argument('--disable-javascript') # 禁用javascript
@@ -50,23 +50,23 @@ def main():
     # 未携带cookies打开网页
     driver.get(url)
     citys={ "上海":"S",
-            "北京":"B",
-            "广州":"G",
-            "深圳":"S",
-            "天津":"T",
-            "西安":"X",
-            "杭州":"H",
-            "南京":"N",
-            "武汉":"W",
-            "成都":"C",
-            "青岛":"Q",
-            "无锡":"W",
-            "长沙":"C",
-            "大连":"D",
-            "昆明":"K",
-            "珠海":"Z",
-            "济南":"J",
-            "苏州":"S",
+            # "北京":"B",
+            # "广州":"G",
+            # "深圳":"S",
+            # "天津":"T",
+            # "西安":"X",
+            # "杭州":"H",
+            # "南京":"N",
+            # "武汉":"W",
+            # "成都":"C",
+            # "青岛":"Q",
+            # "无锡":"W",
+            # "长沙":"C",
+            # "大连":"D",
+            # "昆明":"K",
+            # "珠海":"Z",
+            # "济南":"J",
+            # "苏州":"S",
             "沈阳":"S"
                 }
     df = pd.DataFrame() 
@@ -128,6 +128,6 @@ def main():
             info =get_info(city,driver)
             df=df.append(info)
     print(df.count)
-    df.to_excel(r"C:\Users\110815\Desktop\dp_netbar_0630_5.xlsx")
+    df.to_excel(r"dp_netbar_0630_5.xlsx")
 
 main()
