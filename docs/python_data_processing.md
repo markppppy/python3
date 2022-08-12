@@ -10,7 +10,7 @@
 
 pd.read_csv() 参数说明：<br>
 - names 若文件中包含列名，则对读取的列重命名，若没有列名，则指定列名
-- parse_dates 指定要识别为日期的字符串列
+- parse_dates 指定要识别为日期的字符串列, [col] / [index]
   date_parser 指定日期字符串的格式，如`date_parser=lambda x: pd.to_datetime(x, format='%Y/%m/%d')`
 ---
 
@@ -30,6 +30,7 @@ pd.set_option('display.max_columns', None)
 
 ### 修改df数据类型(待补充)
 ```python
+df[col].dtypes  # 某列数据类型
 df[col].astype('object')  # astype会有隐藏的错误
 # 参考：https://zhuanlan.zhihu.com/p/35287822
 ```
