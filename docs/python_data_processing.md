@@ -90,6 +90,7 @@ df.reset_index(drop=True, inplace=True)  # 排序后index会打乱，根据需�
 1. `df['new_column'] = np.select([(df['total_cnt'] != 0), (df['total_cnt'] == 0)], [df['called_cnt'] / df3['total_cnt'], 0])`
     - `.select()` 第一个参数列表是不同的条件，第二个列表对应的是不同条件对应的不同值
 2. 也可以写个函数作用于某一列，如: `df[col_new] = df['col'].map(fuc)`
+    - `df['是否为空'] = df['score'].apply(lambda x: 1 if x is np.nan else 0)`
 
 ---
 
