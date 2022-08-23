@@ -67,8 +67,8 @@
 
 ## virtualenv创建虚拟环境
 1. pip(/pip3) install virtualenv
-2. 创建虚拟环境 `virtualenv env_name --python=python3.6` 会在执行路径下生成env_name同名目录
-3. 进入虚拟环境 `source ./env_name/bin/activate`
+2. 创建虚拟环境 `virtualenv env_name --python=python3.6` 会在执行路径下生成env_name同名目录；因为没办法自动检索所有本机所有虚拟环境，建议把虚拟环境安装在统一目录
+3. 进入虚拟环境 `(win) .\ml_python\Scripts\activate; (linux)source ./env_name/bin/activate`
 4. 退出虚拟环境 `deactivate`
 5. 删除虚拟环境: 删除目录`env_name`
 
@@ -126,5 +126,6 @@
 
 - 使用conda虚拟py环境：在设置的'python.pythonPath'值改为: D:\Apps\anaconda3\envs，ctrl+shift+p选择python环境就能看到多个可选环境
 
-
+- 设置项目的python环境
+  - 快捷键 ctrl + shift + p, 选择 python: select interpreter, 选择对应的项目名, 选择要指定的python环境 
 
