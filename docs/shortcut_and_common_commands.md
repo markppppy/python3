@@ -45,6 +45,10 @@
   - 查找关键字：命令模式下输入：`/keystr` 就是查找keystr 
   - 显示行号 `:set nu` 取消显示 `:set nonu`
 
+- sz filename 从linux下载文件到本地
+
+- rz 从本地上传文件到linux
+
 - 待查命令：`pstree -ap|grep gunicorn kill -9 94310`
 
 # python-pip & conda & virtualenv
