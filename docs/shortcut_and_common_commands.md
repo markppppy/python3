@@ -49,6 +49,9 @@
 
 - rz 从本地上传文件到linux
 
+- crontab 定期执行程序的命令
+  - crontab -l  查看当前的时程表 
+
 - 待查命令：`pstree -ap|grep gunicorn kill -9 94310`
 
 # python-pip & conda & virtualenv
