@@ -207,7 +207,7 @@ df_api = pd.read_sql(sql=sql5, con=connect_api_mobdb)
   ```
 ---
 
-### Pandas使用感悟
+### Pandas使用中的问题
 
 - 遍历dataframe中的行(`df.iterrows()` or `df.itertuples()`)返回的是series，不方便操作, 可以把df转换为字典列表(`df.to_dict('records')`)会更好操作，至少目前这样认为；
 
