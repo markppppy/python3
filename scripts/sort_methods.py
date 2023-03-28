@@ -36,8 +36,8 @@ def buble_sort(lst: List) -> List:
     if n <= 1:
         return lst
     for i in range(n):  # 遍历的次数，和元素位置没关系
-        flag = True
-        for j in range(n-i-1):  # 每次遍历会把有序元素放在最后，所以只比较前面的元素; 为什么是 n-i-1 ? i 是从0开始, 当 i=0 时, n-1即lst的最后一个元素就不用遍历了, 因为 j, j+1
+        flag = True  # 如果已经有序，终止循环
+        for j in range(n-i-1):  # 每次遍历会把有序元素放在最后，所以只比较前面的元素; 
             if lst[j] > lst[j+1]:  # 这里是大于号, 所以这个冒泡排序是稳定的
                 lst[j], lst[j+1] = lst[j+1], lst[j]
                 flag = False
@@ -51,6 +51,12 @@ def insert_sort(lst: List) -> List:
     n = len(lst)
     if n <= 1:
         return lst
+    # 每次拿到元素后，从前往后比
+    # for i in range(n-1): # 循环的次数，每次循环从后面拿一个元素
+    #     for l in range(i+1): # 用拿到的元素和前面已有序的元素依次比较
+    #         if lst[i+1] < lst[l]:
+    #             lst[i+1], lst[l] = lst[l], lst[i+1]
+    # 每次拿到元素后，从后往前比 
     for i in range(1, n):  # 每次从 i 到 n-1 取一个元素
         key = lst[i]
         j = i - 1
@@ -161,8 +167,9 @@ if __name__ == '__main__':
     lst_origin = [3, 5, -1, 9, 12, 1]
     # print(selection_sort(lst_origin))
     n = len(lst_origin)-1
-    quick_sort(lst_origin, 0, n)
+    # quick_sort(lst_origin, 0, n)
     # mergeSort(lst_origin, 0, n)
+    insert_sort(lst_origin)
     print(lst_origin)
     # for i in range(0):  # 不会循环的
     #     print('wulawula')
