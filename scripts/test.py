@@ -15,40 +15,59 @@ a = max(1, 2, 3)
 # print('%dA%dB'%(1, 2))
 
 lst_origin = [3, 5, -1, 9, 12, 1]
+lst_test = [-1, 2, 3, 4]
 # 冒泡排序
 def bubble_sort(lst: List):
-    n = len(lst)
+    # 依次比较相邻元素，每次把最大的元素移到最后一位
+    n = len(lst) 
     if n <= 1:
-        return lst
-    for i in range(n-1):  # 循环的次数
-        flag = True  # 如果已经有序，终止循环
-        for l in range(n-i-1):
+        return 
+    for i in range(n-1):
+        flag = True
+        for l in range(n-1-i):
             if lst[l] > lst[l+1]:
-                lst[l], lst[l+1] = lst[l+1], lst[l] 
-                flag = False
+                lst[l], lst[l+1] = lst[l+1], lst[l]
+                flag = False 
         if flag:
-            break 
-    return lst 
+            break
+     
 
 # 插入排序 
 def insert_sort(lst: List):
     n = len(lst) 
     if n <= 1:
-        return lst 
-    # for i in range(n-1): # 循环的次数，每次循环从后面拿一个元素
-    #     for l in range(i+1): # 用拿到的元素和前面已有序的元素依次比较
-    #         if lst[i+1] < lst[l]:
-    #             lst[i+1], lst[l] = lst[l], lst[i+1]
-    for i in range(n-1): # 循环的次数，每次循环从后面拿一个元素
-        key = lst[i+1]
-        j = i 
-        while j >= 0 and key <= lst[j]:
-            lst[j+1] = lst[j]
-            j -= 1
-        lst[j+1] = key    
-    return lst             
+        return
+    for i in range(n-1):
+        j = i+1
+        for l in range(j): 
+            if lst[l] > lst[l+1]:
+                lst[l], lst[l+1] = lst[l+1], lst[l]
 
-# print(insert_sort(lst_origin))
+
+# 选择排序
+def selection_sort(lst: List):
+    '''
+    每次从未排序选择最小元素，和未排序子列表的第一个元素换位置
+    '''
+    n = len(lst)
+    if n <= 1:
+        return lst
+    nsid = 0  # 未排序子列表的的第一个元素下标
+    for l in range(n):  # 这个范围不重要，没那么精确 
+        minid = nsid  # 最小元素下标 
+        for i in range(nsid+1, n):
+            if lst[i] < lst[minid]:
+                minid = i 
+        lst[minid], lst[nsid] = lst[nsid], lst[minid] 
+        nsid += 1 
+
+            
+
+
+
+# selection_sort(lst_origin)
+# selection_sort(lst_test)
+lst = insert_sort(lst_origin)
 
 
 

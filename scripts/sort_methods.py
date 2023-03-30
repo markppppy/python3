@@ -34,7 +34,7 @@ def buble_sort(lst: List) -> List:
     # 优化: 如果有一次冒泡的过程中，没有元素交换，那证明当前元素已经是有序的了, 跳过后面的比较。可以用 flag 来实现。
     n = len(lst)
     if n <= 1:
-        return lst
+        return
     for i in range(n):  # 遍历的次数，和元素位置没关系
         flag = True  # 如果已经有序，终止循环
         for j in range(n-i-1):  # 每次遍历会把有序元素放在最后，所以只比较前面的元素; 
@@ -43,17 +43,17 @@ def buble_sort(lst: List) -> List:
                 flag = False
         if flag:
             break
-    return lst
+    return
 
 
 def insert_sort(lst: List) -> List:
     # 插入排序，每次从后面未排序的元素中，取一个，和前面已排序的元素对比
     n = len(lst)
     if n <= 1:
-        return lst
+        return
     # 每次拿到元素后，从前往后比
     # for i in range(n-1): # 循环的次数，每次循环从后面拿一个元素
-    #     for l in range(i+1): # 用拿到的元素和前面已有序的元素依次比较
+    #     for l in range(i+1): # 用拿到的元素和前面已有序的元素依次比较; 和冒泡排序的区别在l的取值范围的变化
     #         if lst[i+1] < lst[l]:
     #             lst[i+1], lst[l] = lst[l], lst[i+1]
     # 每次拿到元素后，从后往前比 
@@ -65,7 +65,7 @@ def insert_sort(lst: List) -> List:
             lst[j+1] = lst[j]
             j -= 1
         lst[j+1] = key
-    return lst
+    return
 
 
 def selection_sort(lst: List) -> List:
@@ -73,16 +73,16 @@ def selection_sort(lst: List) -> List:
     # 3个时间复杂度都是O(n^2) 非稳定性排序
     n = len(lst)
     if n <= 1:
-        return lst
-    srtd = 0  # 索引，是未排序列表的位置，用来维护已排序列表
+        return
+    srtd = 0  # 未排序子列表的的第一个元素下标
     while srtd < n:
-        min_index = srtd
+        min_index = srtd  # 最小元素下标 
         for i in range(srtd+1, n):
             if lst[i] < lst[min_index]:
                 min_index = i
         lst[srtd], lst[min_index] = lst[min_index], lst[srtd]
         srtd += 1
-    return lst
+    return
 
 
 def quick_sort(arr, low, high):

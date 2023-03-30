@@ -1,7 +1,10 @@
 [toc]
 
 # Python数据处理知识汇总
-
+## Python基础
+### 函数
+- 执行到达函数体的末尾而未命中return语句，默认返回None；
+- 返回None和没有返回值等价
 ## Pandas
 
 ---
