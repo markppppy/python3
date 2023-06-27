@@ -67,7 +67,15 @@ def selection_sort(lst: List):
 
 # selection_sort(lst_origin)
 # selection_sort(lst_test)
-lst = insert_sort(lst_origin)
+# lst = insert_sort(lst_origin)
+
+# 解决问题的方法和数据组织形式、空间利用率有关
+def printN(n: int):
+    if n:
+        printN(n-1)
+        print('%d'%n)
+
+printN(10)
 
 
 
