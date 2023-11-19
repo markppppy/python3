@@ -75,9 +75,22 @@ def printN(n: int):
         printN(n-1)
         print('%d'%n)
 
-printN(10)
+# printN(10)
 
+str1 = {1,2,3}
+str2 = {1,2}
 
+print(str1 < str2)
+
+x=3==3,5
+print(x)
 
 # 时间复杂度是log的算法
+
+import sys 
+
+target = [] 
+
+for line in  sys.stdin:
+    target.append(int(line))
 
