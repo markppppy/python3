@@ -1,5 +1,5 @@
 import requests
-from os import environ
+import os
 from time import sleep
 import time
 import json
@@ -58,12 +58,12 @@ def process_datafields_opt(df, data_type):
     return tb_fields
 
 def login():
-    username=environ.get('wq_account')
-    password=environ.get('wq_password')
+    username=os.environ.get('wq_account')
+    password=os.environ.get('wq_password')
     s = requests.Session()
     s.auth = (username, password)
     response = s.post('https://api.worldquantbrain.com/authentication')
-    print(response.content)
+    # print(response.content)
     return s  
  
 def get_datafields(
@@ -152,7 +152,7 @@ def intersection_of_lists(list1, list2):
     return [element for element in list1 if element in list2]
 
 
-def generate_sim_data_single(alpha,decay, region, uni, neut):
+def generate_sim_data_single(alpha,decay=1,region='USA', uni='TOP3000', neut='SUBINDUSTRY'):
 
     simulation_data = {
         'type': 'REGULAR',
